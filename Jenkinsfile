@@ -22,7 +22,7 @@ pipeline{
         }
         stage('Trivy Image Scan') {
             steps {
-                sh "trivy image meetimage:v1 > trivy.txt"
+                sh "trivy image meetimage:v1 --scanners vuln> trivy.txt"
             }
         }
         stage('push Docker Imgae'){
