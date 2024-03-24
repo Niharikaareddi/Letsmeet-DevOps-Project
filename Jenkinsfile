@@ -3,7 +3,7 @@ pipeline{
     stages {
         stage('Git Checkout'){
             steps {
-                git branch: 'main', url: 'https://github.com/Niharikaareddi/VDay-DevOps-Project'
+                git branch: 'main', url: 'https://github.com/Niharikaareddi/Letsmeet-DevOps-Project'
             }
         }
         stage('Trivy FileSystem scan') {
