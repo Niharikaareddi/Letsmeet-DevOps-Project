@@ -2,7 +2,11 @@
 FROM nginx:latest
 
 # Copy the HTML files to the Nginx default html directory
-COPY finally.html nextpage.html yes.html style.css /usr/share/nginx/html/
+COPY finally.html /usr/share/nginx/html/
+COPY yes.html /usr/share/nginx/html/
+COPY nextpage.html /usr/share/nginx/html/
+COPY style.css /usr/share/nginx/html/
+
 
 
 # Expose port 80 for web traffic
