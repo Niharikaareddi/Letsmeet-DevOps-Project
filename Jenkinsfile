@@ -15,31 +15,31 @@ pipeline{
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'docker-cred' , toolName: 'docker') {
-                      sh "docker build -t docker.io/niharikareddyy/meetimage:v1 ."
+                      sh "docker build -t docker.io/niharikareddyy/meetapp:v1 ."
                     }
                 }
             }
         }
         stage('Trivy Image Scan') {
             steps {
-                sh "trivy image meetimage:v1 --scanners vuln> trivy.txt"
+                sh "trivy image niharikareddyy/meetapp:v1 > trivy.txt"
             }
         }
-        stage('push Docker Imgae'){
+        stage('push Docker Image'){
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'docker-cred' , toolName: 'docker') {
-                        sh "docker push docker.io/niharikareddyy/meetimage:v1"
+                        sh "docker push docker.io/niharikareddyy/meetapp:v1"
                     }
                 }
             }
         }
         stage('Deploy Container') {
             steps {
-                sh "docker run -d -p 8081:80 meetimage:v1"
+                sh "docker run -d -p 8081:80 niharikareddyy/meetapp:v1"
             }
         }
     }
+
 }
-
-
+    
